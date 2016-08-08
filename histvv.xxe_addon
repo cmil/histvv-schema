@@ -14,4 +14,6 @@
   <a:abstract>Diese Erweiterung stellt das RELAX NG Schema des HistVV-Projekts
   zum Transkribieren historischer Vorlesungsverzeichnisse zur
   Verfügung.</a:abstract>
+
+  <a:xxeVersion>7.0+</a:xxeVersion>
 </a:addon>
