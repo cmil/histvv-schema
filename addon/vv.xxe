@@ -1,10 +1,12 @@
-<?xml version='1.0' encoding='utf-8'?>
-<configuration name="HistVV"
-  xmlns="http://www.xmlmind.com/xmleditor/schema/configuration">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="HistVV - Vorlesungsverzeichnis"
+               xmlns="http://www.xmlmind.com/xmleditor/schema/configuration"
+               xmlns:vv="http://histvv.uni-leipzig.de/ns/2007"
+               xmlns:ns="http://www.xmlmind.com/xmleditor/schema/configuration">
   <detect>
     <and>
       <rootElementLocalName>vv</rootElementLocalName>
+
       <rootElementNamespace>http://histvv.uni-leipzig.de/ns/2007</rootElementNamespace>
     </and>
   </detect>
@@ -13,32 +15,34 @@
 
   <schematron location="../histvv.rng"/>
 
-  <css name="Editieransicht" location="css/edit.css" />
-  <css name="Struktur" location="css/structure.css" alternate="true"/>
-  <css name="Textansicht" location="css/text.css" alternate="true"/>
+  <css location="css/edit.css" name="Editieransicht"/>
 
-  <template name="Vorlesungsverzeichnis" location="templates/vv.xml" />
+  <css alternate="true" location="css/structure.css" name="Struktur"/>
+
+  <css alternate="true" location="css/text.css" name="Textansicht"/>
+
+  <template location="templates/vv.xml" name="Vorlesungsverzeichnis"/>
 
   <saveOptions favorInteroperability="false"/>
 
   <elementTemplate name="default" selectable="override">
-    <veranstaltung xmlns="http://histvv.uni-leipzig.de/ns/2007"/>
+    <vv:veranstaltung/>
   </elementTemplate>
 
   <elementTemplate name="default" selectable="override">
-    <sachgruppe xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <titel/>
-    </sachgruppe>
+    <vv:sachgruppe>
+      <vv:titel/>
+    </vv:sachgruppe>
   </elementTemplate>
 
   <!--
     aus irgendeinem Grund funktioniert das nicht mit
     selectable="override"
-  --> 
-  <elementTemplate name="transkribent">
-    <status xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <transkribent/>
-    </status>
-  </elementTemplate>
+  -->
 
+  <elementTemplate name="transkribent">
+    <vv:status>
+      <vv:transkribent/>
+    </vv:status>
+  </elementTemplate>
 </configuration>

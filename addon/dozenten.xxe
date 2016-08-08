@@ -1,10 +1,12 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration name="HistVV - Dozenten"
-  xmlns="http://www.xmlmind.com/xmleditor/schema/configuration">
-
+               xmlns="http://www.xmlmind.com/xmleditor/schema/configuration"
+               xmlns:vv="http://histvv.uni-leipzig.de/ns/2007"
+               xmlns:ns="http://www.xmlmind.com/xmleditor/schema/configuration">
   <detect>
     <and>
       <rootElementLocalName>dozentenliste</rootElementLocalName>
+
       <rootElementNamespace>http://histvv.uni-leipzig.de/ns/2007</rootElementNamespace>
     </and>
   </detect>
@@ -13,52 +15,54 @@
 
   <schematron location="../histvv.rng"/>
 
-  <css name="Dozentenliste" location="css/dozenten.css" />
-  <css name="Übersicht" location="css/dozentenuebersicht.css" alternate="true"/>
+  <css location="css/dozenten.css" name="Dozentenliste"/>
+
+  <css alternate="true" location="css/dozentenuebersicht.css" name="Übersicht"/>
 
   <windowLayout>
     <left css="Übersicht" size="0.25"/>
+
     <center css="Dozentenliste"/>
   </windowLayout>
 
-  <template name="Dozentenliste" location="templates/dozenten.xml" />
+  <template location="templates/dozenten.xml" name="Dozentenliste"/>
 
   <saveOptions favorInteroperability="false"/>
 
   <elementTemplate name="default" selectable="override">
-    <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <jahr></jahr><monat></monat><tag></tag>
-    </geboren>
+    <vv:geboren>
+      <vv:jahr/><vv:monat/><vv:tag/>
+    </vv:geboren>
   </elementTemplate>
 
   <elementTemplate name="jahr">
-    <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <jahr></jahr>
-    </geboren>
+    <vv:geboren>
+      <vv:jahr/>
+    </vv:geboren>
   </elementTemplate>
 
   <elementTemplate name="datum_ort">
-    <geboren xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <jahr></jahr><monat></monat><tag></tag><ort></ort>
-    </geboren>
+    <vv:geboren>
+      <vv:jahr/><vv:monat/><vv:tag/><vv:ort/>
+    </vv:geboren>
   </elementTemplate>
 
   <elementTemplate name="default" selectable="override">
-    <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <jahr></jahr><monat></monat><tag></tag>
-    </gestorben>
+    <vv:gestorben>
+      <vv:jahr/><vv:monat/><vv:tag/>
+    </vv:gestorben>
   </elementTemplate>
 
   <elementTemplate name="jahr">
-    <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <jahr></jahr>
-    </gestorben>
+    <vv:gestorben>
+      <vv:jahr/>
+    </vv:gestorben>
   </elementTemplate>
 
   <elementTemplate name="datum_ort">
-    <gestorben xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <jahr></jahr><monat></monat><tag></tag><ort></ort>
-    </gestorben>
+    <vv:gestorben>
+      <vv:jahr/><vv:monat/><vv:tag/><vv:ort/>
+    </vv:gestorben>
   </elementTemplate>
 
   <!--
@@ -66,38 +70,39 @@
       also require modifications of xsl/dozenten-tidy.xsl to make sure
       the tidyDozentenliste command continues to do its job.
   -->
+
   <elementTemplate name="default" selectable="override">
-    <dozent xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <name>
-        <nachname/>
-        <vorname/>
-      </name>
-      <geboren>
-        <jahr/><monat/><tag/><ort/>
-      </geboren>
-      <gestorben>
-        <jahr/><monat/><tag/><ort/>
-      </gestorben> 
-      <pnd/>
-      <beruf/>
-      <adb>
-        <band/><seite/><url/>
-      </adb>
-      <ndb>
-        <band/><seite/><url/>
-      </ndb>
+    <vv:dozent>
+      <vv:name>
+        <vv:nachname/>
+        <vv:vorname/>
+      </vv:name>
+      <vv:geboren>
+        <vv:jahr/><vv:monat/><vv:tag/><vv:ort/>
+      </vv:geboren>
+      <vv:gestorben>
+        <vv:jahr/><vv:monat/><vv:tag/><vv:ort/>
+      </vv:gestorben>
+      <vv:pnd/>
+      <vv:beruf/>
+      <vv:adb>
+        <vv:band/><vv:seite/><vv:url/>
+      </vv:adb>
+      <vv:ndb>
+        <vv:band/><vv:seite/><vv:url/>
+      </vv:ndb>
       <!--[Links zu Wikipedia, Professorenkatalog, BBKL usw.]-->
-      <url/>
-    </dozent>
+      <vv:url/>
+    </vv:dozent>
   </elementTemplate>
 
   <elementTemplate name="minimal">
-    <dozent xmlns="http://histvv.uni-leipzig.de/ns/2007">
-      <name>
-        <nachname/>
-        <vorname/>
-      </name>
-    </dozent>
+    <vv:dozent>
+      <vv:name>
+        <vv:nachname/>
+        <vv:vorname/>
+      </vv:name>
+    </vv:dozent>
   </elementTemplate>
 
   <!--
@@ -109,23 +114,28 @@
   <command name="applyTidyDozentenliste">
     <macro>
       <sequence>
-        <command name="XXE.save" parameter="[ifNeeded]" />
-        <command name="tidyDozentenliste" />
-        <command name="XXE.open" parameter="[reopen]" />
-        <command name="alert" parameter="Please save the document one more time!" />
+        <command name="XXE.save" parameter="[ifNeeded]"/>
+
+        <command name="tidyDozentenliste"/>
+
+        <command name="XXE.open" parameter="[reopen]"/>
+
+        <command name="alert"
+                 parameter="Please save the document one more time!"/>
       </sequence>
     </macro>
   </command>
 
   <command name="tidyDozentenliste">
     <process showProgress="false">
-      <transform stylesheet="xsl/dozenten-tidy.xsl" file="%D" to="tmp.xml" />
-      <copy files="tmp.xml" to="%D" />
+      <transform file="%D" stylesheet="xsl/dozenten-tidy.xsl" to="tmp.xml"/>
+
+      <copy files="tmp.xml" to="%D"/>
     </process>
   </command>
 
   <menu label="Histvv">
-    <item label="_Tidy Document" command="applyTidyDozentenliste">
+    <item command="applyTidyDozentenliste" label="_Tidy Document">
       <accelerator code="F5"/>
     </item>
   </menu>
@@ -134,15 +144,17 @@
     <macro>
       <sequence>
         <command name="insertString" parameter=" "/>
+
         <command name="deleteChar" parameter="backwards"/>
-        <command name="XXE.save" parameter="[ifNeeded]" />
+
+        <command name="XXE.save" parameter="[ifNeeded]"/>
       </sequence>
     </macro>
   </command>
 
   <binding>
     <keyPressed code="F6"/>
+
     <command name="histvv.resave"/>
   </binding>
-
 </configuration>
