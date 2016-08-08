@@ -9,10 +9,9 @@
     </and>
   </detect>
 
-  <relaxng location="histvv.rng"
-           name="http://histvv.uni-leipzig.de/ns/2007"/>
+  <relaxng location="../histvv.rng"/>
 
-  <schematron location="histvv.rng"/>
+  <schematron location="../histvv.rng"/>
 
   <css name="Editieransicht" location="css/edit.css" />
   <css name="Struktur" location="css/structure.css" alternate="true"/>
