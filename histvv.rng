@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Histvv schema
+
+  Copyright (C) 2018 Leipzig University Library <info@ub.uni-leipzig.de>
+
+  Author: Carsten Milling <cmil@hashtable.de>
+
+  The histvv schema is free software: you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by the Free
+  Software Foundation, either version 3 of the License, or (at your option) any
+  later version.
+
+  The histvv schema is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  You should have received a copy of the GNU General Public License along with
+  this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -313,7 +333,7 @@
   <define name="model.veranstaltung">
     <interleave>
       <ref name="text-content"/>
-      <!-- 
+      <!--
            <dozent> bzw. <ders> sind optional um das Editieren zu
            erleichtern. TODO: Eine Schematron-Regel könnte auf fehlende
            Dozentenangaben hinweisen.
@@ -354,7 +374,7 @@
     </a:documentation>
     <element name="veranstaltung">
       <ref name="common.attributes"/>
-      <!-- 
+      <!--
         Die folgenden Attribute dienen der Angabe von
         Veranstaltungsdaten in Fällen, wo diese nicht über Elemente
         auszeichenbar sind sondern aus dem Kontext erschlossen
@@ -442,7 +462,7 @@
             <data type="NMTOKEN"/>
           </attribute>
         </optional>
-        <!-- 
+        <!--
              Um das Editieren zu erleichtern sind alle Kindelemente
              optional. TODO: Eine Schematron-Regel könnte auf
              unvollständige Dozentenangaben hinweisen.
@@ -1268,10 +1288,10 @@
             <ref name="veranstaltungsverweis"/>
             <ref name="absatz"/>
             <ref name="trennlinie"/>
-            <ref name="seite"/>          
-            <ref name="dozent"/>          
-            <ref name="modus"/>          
-            <ref name="gebühr"/>          
+            <ref name="seite"/>
+            <ref name="dozent"/>
+            <ref name="modus"/>
+            <ref name="gebühr"/>
           </choice>
         </zeroOrMore>
         <text/>
